@@ -5,53 +5,80 @@ import './App.css';
 
 function App() {
   const updateTime = 30 * 60 * 1000; // min * sec * millisecond
+  const [data,setData] =useState({})
   const [globalData,setGlobalData] =useState({})
   const [countriesData,setCountriesData]=useState([])
   const [countriesList,setCountriesList]=useState([])
-  const [country,setCountry] =useState("worldwide")
+  const [country,setCountry] =useState("Worldwide")
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const getCovidData= async() => {
+    const data = {};
+    await axios.get(`https://disease.sh/v3/covid-19/all?yesterday=false&twoDaysAgo=false&allowNull=false`)
+      .then(res => {
+        const result = covidData(res.data)
+        console.log(typeof result)
+        data["Worldwide"] = result;
+      })
+
+    await axios.get(`https://disease.sh/v3/covid-19/countries?yesterday=false&twoDaysAgo=false&allowNull=false`)
+      .then(res => {
+        res.data.forEach(country => {
+          data[`${country.country}`] = covidData(country);
+        });
+      });
+
+      setData(data);
+      console.log(data)
+      return data
+      
+
+  }
+    
+
+  const covidData = (data) => {
+    return ({
+      "totalCases":data.cases,
+      "activeCases":data.active,
+      "recovryCases":data.recovered,
+      "deathCases":data.deaths,
+      "todayCases":data.todayCases,
+      "todayDeaths":data.todayDeaths,
+      "todayRecovered":data.todayRecovered,
+      "lat":data.countryInfo === undefined ? null: data.countryInfo.lat,
+      "long":data.countryInfo === undefined ? null: data.countryInfo.long,
+      "flag":data.countryInfo === undefined ? null: data.countryInfo.flag,
+
+    })
+  }
+
   useEffect(()=>{
-    // get global data
-    axios.get(`https://disease.sh/v3/covid-19/all?yesterday=false&twoDaysAgo=false&allowNull=false`)
-      .then(res =>  setGlobalData(res.data))
-    // get data for each country
-    axios.get(`https://disease.sh/v3/covid-19/countries?yesterday=false&twoDaysAgo=false&allowNull=false`)
-      .then(res => setCountriesData(res.data))
-    
-    const countriesList = countriesData.map(country => (
-
-      {
-      name:country.country,
-      value:country.countryInfo.iso2
-      }
-    )
-    );
-    setCountriesList(countriesList);
-    
-    // update data periodically
+   getCovidData()
+   .then(data => setCountriesList(Object.keys(data)))
+   
     setInterval(()=>{
-        // get global data
-      axios.get(`https://disease.sh/v3/covid-19/all?yesterday=false&twoDaysAgo=false&allowNull=false`)
-      .then(res =>  setGlobalData(res.data))
-      // get data for each country
-      axios.get(`https://disease.sh/v3/covid-19/countries?yesterday=false&twoDaysAgo=false&allowNull=false`)
-      .then(res => setCountriesData(res.data))
-     
+      getCovidData()
     },updateTime)
-
-  },[countriesData, updateTime])
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+ 
+  
   return (
     <div className="app">
       <header>
-      <h1>COVID-19 Tracker</h1>
+  <h1>COVID-19 Tracker </h1>
+  
       <FormControl className="app__dropdown">
+        
         <Select
           variant="outlined"
           value={country}
           onChange={event => setCountry(event.target.value)}
           >
-            <MenuItem  value ="worldwide">Worldwide</MenuItem>
-            {countriesList.map((country,index) => {
-              return <MenuItem value={country.value}>{country.name}</MenuItem>
+            { 
+              countriesList.map((country,index) => {
+              return <MenuItem key={index} value={country}>{country}</MenuItem>
             })
             }
             
