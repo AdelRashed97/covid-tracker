@@ -2,12 +2,11 @@ import { FormControl, MenuItem, Select } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import InfoBox from "./InfoBox"
 
 function App() {
   const updateTime = 30 * 60 * 1000; // min * sec * millisecond
   const [data,setData] =useState({})
-  const [globalData,setGlobalData] =useState({})
-  const [countriesData,setCountriesData]=useState([])
   const [countriesList,setCountriesList]=useState([])
   const [country,setCountry] =useState("Worldwide")
 
@@ -24,7 +23,7 @@ function App() {
     await axios.get(`https://disease.sh/v3/covid-19/countries?yesterday=false&twoDaysAgo=false&allowNull=false`)
       .then(res => {
         res.data.forEach(country => {
-          data[`${country.country}`] = covidData(country);
+          data[country.country] = covidData(country);
         });
       });
 
@@ -40,7 +39,7 @@ function App() {
     return ({
       "totalCases":data.cases,
       "activeCases":data.active,
-      "recovryCases":data.recovered,
+      "recoveredCases":data.recovered,
       "deathCases":data.deaths,
       "todayCases":data.todayCases,
       "todayDeaths":data.todayDeaths,
@@ -67,26 +66,52 @@ function App() {
   return (
     <div className="app">
       <header>
-  <h1>COVID-19 Tracker </h1>
-  
-      <FormControl className="app__dropdown">
-        
-        <Select
-          variant="outlined"
-          value={country}
-          onChange={event => setCountry(event.target.value)}
-          >
-            { 
-              countriesList.map((country,index) => {
-              return <MenuItem key={index} value={country}>{country}</MenuItem>
-            })
-            }
-            
-          </Select>
+        <h1>COVID-19 Tracker </h1>
+    
+        <FormControl className="app__dropdown">
           
-      </FormControl>
+          <Select
+            variant="outlined"
+            value={country}
+            onChange={event => setCountry(event.target.value)}
+            >
+              { 
+                countriesList.map((country,index) => {
+                return <MenuItem key={index} value={country}>{country}</MenuItem>
+              })
+              }
+              
+            </Select>
+            
+        </FormControl>
 
       </header>
+
+      <div className="app__stats">
+
+        <InfoBox 
+        title="Active Coronavirus Cases" 
+        cases ={data[country] ? data[country].todayCases : null}
+        totalCases = {data[country] ? data[country].activeCases : null }
+        
+         />
+
+        <InfoBox 
+        title="Recoverd Cases" 
+        cases ={data[country] ? data[country].todayRecovered : null}
+        totalCases = {data[country] ? data[country].recoveredCases : null }
+         />
+
+         <InfoBox 
+        title="Death Cases" 
+        cases ={data[country] ? data[country].todayDeaths : null}
+        totalCases = {data[country] ? data[country].deathCases : null }
+         />
+
+
+      </div>
+
+
     </div>
   );
 }
