@@ -92,7 +92,7 @@ function App() {
         <div className="app__stats">
 
         <InfoBox 
-        title="Active Coronavirus Cases" 
+        title="Active Cases" 
         cases ={data[country] ? data[country].todayCases : null}
         totalCases = {data[country] ? data[country].activeCases : null }
         />

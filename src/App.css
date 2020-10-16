@@ -6,6 +6,15 @@ body {
   background-color:#f5f6fa;
 }
 
+.app {
+  display: flex;
+  justify-content:space-evenly ;
+  padding: 20px;
+}
+
+.app__left {
+  flex:0.8
+}
 header {
   display: flex;
   flex-direction: row;
@@ -16,5 +25,12 @@ header {
 
 .app__stats {
   display:flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+
+@media (max-width:900px) {
+  .app {
+    flex-direction: column;
+  }
+  
 }
