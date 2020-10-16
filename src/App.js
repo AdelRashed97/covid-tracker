@@ -1,4 +1,4 @@
-import { FormControl, MenuItem, Select } from '@material-ui/core';
+import { Card, CardContent, FormControl, MenuItem, Select } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './App.css';
@@ -65,7 +65,9 @@ function App() {
   
   return (
     <div className="app">
-      <header>
+      <div className="app__left">
+
+        <header>
         <h1>COVID-19 Tracker </h1>
     
         <FormControl className="app__dropdown">
@@ -87,32 +89,42 @@ function App() {
 
       </header>
 
-      <div className="app__stats">
+        <div className="app__stats">
 
         <InfoBox 
         title="Active Coronavirus Cases" 
         cases ={data[country] ? data[country].todayCases : null}
         totalCases = {data[country] ? data[country].activeCases : null }
+        />
         
-         />
 
         <InfoBox 
         title="Recoverd Cases" 
         cases ={data[country] ? data[country].todayRecovered : null}
         totalCases = {data[country] ? data[country].recoveredCases : null }
-         />
+        />
 
-         <InfoBox 
+        <InfoBox 
         title="Death Cases" 
         cases ={data[country] ? data[country].todayDeaths : null}
         totalCases = {data[country] ? data[country].deathCases : null }
-         />
+        />
 
 
       </div>
+      </div>
+      
+      <div className = "app__right">
+        <Card>
+          <CardContent>
+            <h3>Current Country Stats</h3>
+            <h3> Country New Cases</h3>
+          </CardContent>
+        </Card>
 
-
-    </div>
+      </div>
+    </div>         
+    
   );
 }
 
