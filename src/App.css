@@ -15,14 +15,15 @@ body {
 .app__left {
   flex:0.8
 }
-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+
+.app__header {
   margin-bottom: 20px;
 }
-
+.app__dropdown {
+  width:100%;
+  max-width: 180px;
+  background: white;
+}
 .app__stats {
   display:flex;
   justify-content: space-between;

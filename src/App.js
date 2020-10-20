@@ -1,4 +1,5 @@
-import { Card, CardContent, FormControl, MenuItem, Select } from '@material-ui/core';
+import { Card, CardContent } from '@material-ui/core';
+import Header from './Header'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './App.css';
@@ -66,29 +67,10 @@ function App() {
   return (
     <div className="app">
       <div className="app__left">
-
-        <header>
-        <h1>COVID-19 Tracker </h1>
-    
-        <FormControl className="app__dropdown">
-          
-          <Select
-            variant="outlined"
-            value={country}
-            onChange={event => setCountry(event.target.value)}
-            >
-              { 
-                countriesList.map((country,index) => {
-                return <MenuItem key={index} value={country}>{country}</MenuItem>
-              })
-              }
-              
-            </Select>
-            
-        </FormControl>
-
-      </header>
-
+        <Header country={country} 
+        changeCountry={setCountry} 
+        countries={countriesList} />
+        
         <div className="app__stats">
 
         <InfoBox 
