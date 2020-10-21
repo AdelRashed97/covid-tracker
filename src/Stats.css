@@ -1,0 +1,8 @@
+
+
+@media(max-width:425px){
+  .app__stats {
+    flex-direction: column;
+
+  }
+}
