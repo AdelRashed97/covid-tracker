@@ -24,10 +24,6 @@ body {
   max-width: 180px;
   background: white;
 }
-.app__stats {
-  display:flex;
-  justify-content: space-between;
-}
 
 @media (max-width:900px) {
   .app {
