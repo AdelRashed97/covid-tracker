@@ -3,7 +3,7 @@ import Header from './Header'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import InfoBox from "./InfoBox"
+import Stats from './Stats';
 
 function App() {
   const updateTime = 30 * 60 * 1000; // min * sec * millisecond
@@ -70,30 +70,8 @@ function App() {
         <Header country={country} 
         changeCountry={setCountry} 
         countries={countriesList} />
-        
-        <div className="app__stats">
 
-        <InfoBox 
-        title="Active Cases" 
-        cases ={data[country] ? data[country].todayCases : null}
-        totalCases = {data[country] ? data[country].activeCases : null }
-        />
-        
-
-        <InfoBox 
-        title="Recoverd Cases" 
-        cases ={data[country] ? data[country].todayRecovered : null}
-        totalCases = {data[country] ? data[country].recoveredCases : null }
-        />
-
-        <InfoBox 
-        title="Death Cases" 
-        cases ={data[country] ? data[country].todayDeaths : null}
-        totalCases = {data[country] ? data[country].deathCases : null }
-        />
-
-
-      </div>
+        <Stats stats={data[country]}/>
       </div>
       
       <div className = "app__right">
