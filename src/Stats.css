@@ -1,6 +1,9 @@
 
+.stats__box {
+  margin-bottom: 20px;
+}
 
-@media(max-width:425px){
+@media(max-width:600px){
   .app__stats {
     flex-direction: column;
 

@@ -7,7 +7,7 @@ export default function Stats({stats}) {
   return (
     <Grid className="app__stats" container justify="space-between" space={1} wrap="wrap">
 
-      <Grid xs={12} sm={3}>
+      <Grid className="stats__box"xs={12} sm={3}>
 
         <InfoBox 
           title="Active" 
@@ -17,7 +17,7 @@ export default function Stats({stats}) {
 
       </Grid>
 
-      <Grid xs={12} sm={3}>
+      <Grid className="stats__box" xs={12} sm={3}>
 
         <InfoBox 
           title="Recoverd" 
@@ -27,7 +27,7 @@ export default function Stats({stats}) {
 
       </Grid>
 
-      <Grid xs={12} sm={3}>
+      <Grid className="stats__box" xs={12} sm={3}>
 
         <InfoBox 
           title="Deaths" 
