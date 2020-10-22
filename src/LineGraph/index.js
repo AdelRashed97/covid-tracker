@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import {Line} from 'react-chartjs-2'
 import {options} from './options'
 import { buildChartData } from './buildChartData'
 
@@ -11,11 +12,11 @@ export default function LineGraph({casesType,country}) {
   useEffect(()=>{
     
     if (country === 'Worldwide'){
-      axios.get('https://disease.sh/v3/covid-19/historical/all?lastdays=all')
+      axios.get('https://disease.sh/v3/covid-19/historical/all?lastdays=120')
         .then(res => setTsData(res.data) )
 
     } else {
-      axios.get(`https://disease.sh/v3/covid-19/historical/${country}?lastdays=all`)
+      axios.get(`https://disease.sh/v3/covid-19/historical/${country}?lastdays=120`)
         .then(res => setTsData(res.data.timeline) )
       
     }
@@ -45,7 +46,18 @@ export default function LineGraph({casesType,country}) {
 
   return (
     <div>
-      
+      <Line
+          data={{
+            datasets: [
+              {
+                backgroundColor,
+                borderColor,
+                data: chartData,
+              },
+            ],
+          }}
+          options={options}
+        />
     </div>
   )
 }
