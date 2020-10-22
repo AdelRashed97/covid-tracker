@@ -7,14 +7,7 @@ export const buildChartData = (data,casesType)=>{
         x: date,
         y: data[casesType][date] - lastDataPoint,
       };
-
-      chartData.push(newDataPoint)
-
-    } else {
-      const newDataPoint = {
-        x: date,
-        y: data[casesType][date],
-      };
+      
       chartData.push(newDataPoint)
 
     }
