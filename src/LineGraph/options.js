@@ -1,5 +1,6 @@
 import numeral from 'numeral'
 export const options = {
+  responsive:true,
   legend: {
     display: false,
   },

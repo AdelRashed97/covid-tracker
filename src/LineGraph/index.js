@@ -28,7 +28,6 @@ export default function LineGraph({casesType,country}) {
   // build the line graph data
   useEffect(()=>{
     const chartData = buildChartData(tsData,casesType)
-    console.log('chartData:',chartData)
     setChartData(chartData);
   },[tsData,casesType])
 
@@ -51,6 +50,8 @@ export default function LineGraph({casesType,country}) {
   return (
     <div>
       <h3> {country} new {casesType} </h3>
+      <div className="app__line-graph-container">
+
       <Line
           data={{
             datasets: [
@@ -63,6 +64,7 @@ export default function LineGraph({casesType,country}) {
           }}
           options={options}
         />
+      </div>
         <Box fontStyle="italic" >
         <Typography variant="caption" >
           Note: Because of unavailabe data, some graphs are empty

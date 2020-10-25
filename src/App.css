@@ -24,6 +24,10 @@ body {
   max-width: 180px;
   background: white;
 }
+.app__line-graph-container {
+  width: 90%;
+  margin: auto;
+}
 
 @media (max-width:900px) {
   .app {
