@@ -3,11 +3,12 @@ import { Grid } from '@material-ui/core'
 import InfoBox from './InfoBox'
 import './Stats.css'
 
-export default function Stats({stats}) {
+export default function Stats({stats,setCasesType}) {
   return (
     <Grid className="app__stats" container justify="space-between" space={1} wrap="wrap">
 
-      <Grid className="stats__box"xs={12} sm={3}>
+      <Grid className="stats__box"xs={12} sm={3} 
+        onClick={()=>setCasesType("cases")}>
 
         <InfoBox 
           title="Active" 
@@ -17,7 +18,8 @@ export default function Stats({stats}) {
 
       </Grid>
 
-      <Grid className="stats__box" xs={12} sm={3}>
+      <Grid className="stats__box" xs={12} sm={3}
+        onClick={()=>setCasesType("recovered")}>
 
         <InfoBox 
           title="Recoverd" 
@@ -27,7 +29,8 @@ export default function Stats({stats}) {
 
       </Grid>
 
-      <Grid className="stats__box" xs={12} sm={3}>
+      <Grid className="stats__box" xs={12} sm={3}
+         onClick={()=>setCasesType("deaths")}>
 
         <InfoBox 
           title="Deaths" 
