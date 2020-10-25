@@ -1,15 +1,17 @@
-import { Card, CardContent } from '@material-ui/core';
-import Header from './Header'
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import { Card, CardContent } from '@material-ui/core';
+import axios from 'axios';
+import Header from './Header'
 import Stats from './Stats';
+import LineGraph from './LineGraph'
+import './App.css';
 
 function App() {
   const updateTime = 30 * 60 * 1000; // min * sec * millisecond
   const [data,setData] =useState({})
   const [countriesList,setCountriesList]=useState([])
   const [country,setCountry] =useState("Worldwide")
+  const [casesType,setCasesType] = useState('cases')
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getCovidData= async() => {
@@ -71,14 +73,15 @@ function App() {
         changeCountry={setCountry} 
         countries={countriesList} />
 
-        <Stats stats={data[country]}/>
+        <Stats stats={data[country]} setCasesType={setCasesType}/>
       </div>
       
       <div className = "app__right">
         <Card>
           <CardContent>
             <h3>Current Country Stats</h3>
-            <h3> Country New Cases</h3>
+
+            <LineGraph casesType={casesType} country={country} />
           </CardContent>
         </Card>
 
