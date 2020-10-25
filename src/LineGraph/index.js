@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import {Line} from 'react-chartjs-2'
 import {options} from './options'
 import { buildChartData } from './buildChartData'
+import { Box, Typography } from '@material-ui/core'
+
+
 
 
 export default function LineGraph({casesType,country}) {
@@ -25,6 +28,7 @@ export default function LineGraph({casesType,country}) {
   // build the line graph data
   useEffect(()=>{
     const chartData = buildChartData(tsData,casesType)
+    console.log('chartData:',chartData)
     setChartData(chartData);
   },[tsData,casesType])
 
@@ -46,6 +50,7 @@ export default function LineGraph({casesType,country}) {
 
   return (
     <div>
+      <h3> {country} new {casesType} </h3>
       <Line
           data={{
             datasets: [
@@ -58,6 +63,11 @@ export default function LineGraph({casesType,country}) {
           }}
           options={options}
         />
+        <Box fontStyle="italic" >
+        <Typography variant="caption" >
+          Note: Because of unavailabe data, some graphs are empty
+        </Typography>
+        </Box>
     </div>
   )
 }
