@@ -2,14 +2,13 @@ export const buildChartData = (data,casesType)=>{
   const chartData = [];
   let lastDataPoint;
   for (let date in data.cases) {
-    if (lastDataPoint) {
+    if (lastDataPoint !== undefined) {
       const newDataPoint = {
         x: date,
         y: data[casesType][date] - lastDataPoint,
       };
-      
-      chartData.push(newDataPoint)
 
+      chartData.push(newDataPoint)
     }
     
     lastDataPoint = data[casesType][date];
