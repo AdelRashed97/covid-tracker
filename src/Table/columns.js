@@ -9,7 +9,7 @@ export  const columns = [
 
     },
     id:"country"
-  }
+  },
 
   {
     Header:"Active",
