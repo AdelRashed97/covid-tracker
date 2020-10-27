@@ -1,4 +1,5 @@
 import React from 'react'
+import numeral from 'numeral'
 export  const columns = [
   {
     Header:"Country",
@@ -12,29 +13,84 @@ export  const columns = [
     Cell: function ({value}) {
       const country = JSON.parse(value)
       return (
-        <span>
+        <span className="country">
           <img src={country.flag} alt="flag"/>
             {country.name}
         </span>
       )
     },
-    // accessor:"country",
+
     id:"country"
   },
 
   {
     Header:"Active",
-    accessor:"cases"
+    accessor:"cases",
+    Cell: function ({value}) {
+      if (value === 'null') {
+        return (
+          <span className="stats">
+          <strong>N/A</strong>
+          
+        </span>
+        )
+      } else {
+        
+        return (
+          <span className="stats">
+            <strong>{numeral(value).format('0.000a')}</strong>
+            
+          </span>
+        )
+      }
+    },
+
   },
 
   {
     Header:"Recovered",
-    accessor:"recovered"
+    accessor:"recovered",
+    Cell: function ({value}) {
+      if (value === null) {
+        return (
+          <span className="stats">
+          <strong>N/A</strong>
+          
+        </span>
+        )
+      } else {
+        
+        return (
+          <span className="stats">
+            <strong>{numeral(value).format('0.000a')}</strong>
+            
+          </span>
+        )
+      }
+    },
   },
 
   {
     Header:"Deaths",
-    accessor:"deaths"
+    accessor:"deaths",
+    Cell: function ({value}) {
+      if (value === 'null') {
+        return (
+          <span className="stats">
+          <strong>N/A</strong>
+          
+        </span>
+        )
+      } else {
+        
+        return (
+          <span className="stats">
+            <strong>{numeral(value).format('0.000a')}</strong>
+            
+          </span>
+        )
+      }
+    },
   }
 
 ]
