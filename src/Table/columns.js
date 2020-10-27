@@ -38,7 +38,7 @@ export  const columns = [
         
         return (
           <span >
-            <strong>{numeral(value).format('0.000a')}</strong>
+            <strong>{numeral(value).format('0.00a')}</strong>
             
           </span>
         )
@@ -62,7 +62,7 @@ export  const columns = [
         
         return (
           <span >
-            <strong>{numeral(value).format('0.000a')}</strong>
+            <strong>{numeral(value).format('0.00a')}</strong>
             
           </span>
         )
@@ -85,7 +85,7 @@ export  const columns = [
         
         return (
           <span className="stats">
-            <strong>{numeral(value).format('0.000a')}</strong>
+            <strong>{numeral(value).format('0.00a')}</strong>
             
           </span>
         )
