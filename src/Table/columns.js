@@ -37,7 +37,7 @@ export  const columns = [
       } else {
         
         return (
-          <span className="stats">
+          <span >
             <strong>{numeral(value).format('0.000a')}</strong>
             
           </span>
@@ -53,7 +53,7 @@ export  const columns = [
     Cell: function ({value}) {
       if (value === null) {
         return (
-          <span className="stats">
+          <span >
           <strong>N/A</strong>
           
         </span>
@@ -61,7 +61,7 @@ export  const columns = [
       } else {
         
         return (
-          <span className="stats">
+          <span >
             <strong>{numeral(value).format('0.000a')}</strong>
             
           </span>
