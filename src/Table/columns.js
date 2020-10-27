@@ -2,12 +2,13 @@ export  const columns = [
   {
     Header:"Country",
     accessor: function(row) {
-      return {
+      return JSON.stringify({
         name:row.country,
         flag:row.countryInfo.flag
-      }
+      })
 
     },
+    // accessor:"country",
     id:"country"
   },
 
