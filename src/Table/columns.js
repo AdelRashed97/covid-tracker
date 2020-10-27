@@ -1,3 +1,4 @@
+import React from 'react'
 export  const columns = [
   {
     Header:"Country",
@@ -7,6 +8,15 @@ export  const columns = [
         flag:row.countryInfo.flag
       })
 
+    },
+    Cell: function ({value}) {
+      const country = JSON.parse(value)
+      return (
+        <span>
+          <img src={country.flag} alt="flag"/>
+            {country.name}
+        </span>
+      )
     },
     // accessor:"country",
     id:"country"
