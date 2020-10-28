@@ -13,10 +13,10 @@ export  const columns = [
     Cell: function ({value}) {
       const country = JSON.parse(value)
       return (
-        <span className="country">
+        <div className="country">
           <img src={country.flag} alt="flag"/>
-            {country.name}
-        </span>
+            <div> {country.name} </div>
+        </div>
       )
     },
 
@@ -29,18 +29,18 @@ export  const columns = [
     Cell: function ({value}) {
       if (value === 'null') {
         return (
-          <span className="stats">
+          <div className="stats">
           <strong>N/A</strong>
           
-        </span>
+        </div>
         )
       } else {
         
         return (
-          <span >
+          <div className="stats" >
             <strong>{numeral(value).format('0.00a')}</strong>
             
-          </span>
+          </div>
         )
       }
     },
@@ -51,23 +51,24 @@ export  const columns = [
     Header:"Recovered",
     accessor:"recovered",
     Cell: function ({value}) {
-      if (value === null) {
+      if (value === 'null') {
         return (
-          <span >
+          <div className="stats">
           <strong>N/A</strong>
           
-        </span>
+        </div>
         )
       } else {
         
         return (
-          <span >
+          <div className="stats" >
             <strong>{numeral(value).format('0.00a')}</strong>
             
-          </span>
+          </div>
         )
       }
     },
+ 
   },
 
   {
@@ -76,18 +77,18 @@ export  const columns = [
     Cell: function ({value}) {
       if (value === 'null') {
         return (
-          <span className="stats">
+          <div className="stats">
           <strong>N/A</strong>
           
-        </span>
+        </div>
         )
       } else {
         
         return (
-          <span className="stats">
+          <div className="stats" >
             <strong>{numeral(value).format('0.00a')}</strong>
             
-          </span>
+          </div>
         )
       }
     },
