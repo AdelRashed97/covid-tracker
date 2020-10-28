@@ -15,7 +15,7 @@ export  const columns = [
       return (
         <div className="country">
           <img src={country.flag} alt="flag"/>
-            <div> {country.name} </div>
+            <div className="country__name"> {country.name} </div>
         </div>
       )
     },
