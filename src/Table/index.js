@@ -6,7 +6,7 @@ import { Box, Typography } from '@material-ui/core'
 import {columns as Columns} from "./columns";
 import './Table.css'
 
-export default function Table({setCountry,setCasesType}) {
+export default function Table({changeCountry}) {
   const updateTime = 30 *60*1000;
   const [data,setData] = useState([]);
 
@@ -35,10 +35,9 @@ export default function Table({setCountry,setCasesType}) {
     data:tableData,
   })
 
-const changeCountry = (event)=> {
+const onClick = (event)=> {
   const country = event.currentTarget.getElementsByClassName('country__name')[0].innerHTML.trim();
-  setCountry(country);
-  setCasesType('cases')
+  changeCountry(country)
 
 }
   return (
@@ -60,7 +59,7 @@ const changeCountry = (event)=> {
         {rows.map((row, i) => {
           prepareRow(row)
           return (
-            <tr {...row.getRowProps()} onClick={changeCountry} >
+            <tr {...row.getRowProps()} onClick={onClick} >
               {row.cells.map(cell => {
                 return (<td {...cell.getCellProps()}>{cell.render('Cell')}</td>)
                 

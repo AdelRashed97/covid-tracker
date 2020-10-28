@@ -55,6 +55,11 @@ function App() {
     })
   }
 
+  const changeCountry = (country) => {
+    setCountry(country);
+    setCasesType("cases")
+  };
+
   useEffect(()=>{
    getCovidData()
    .then(data => setCountriesList(Object.keys(data)))
@@ -71,7 +76,7 @@ function App() {
     <div className="app">
       <div className="app__left">
         <Header country={country} 
-        changeCountry={setCountry} 
+        changeCountry={changeCountry} 
         countries={countriesList} />
 
         <Stats stats={data[country]} setCasesType={setCasesType}/>
@@ -80,8 +85,8 @@ function App() {
       <div className = "app__right">
         <Card>
           <CardContent>
-            <h3>Current Country Stats</h3>
-            <Table setCountry={setCountry} setCaseTypes={setCasesType}/>
+            
+            <Table changeCountry={changeCountry}/>
 
             <LineGraph casesType={casesType} country={country} />
           </CardContent>
