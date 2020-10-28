@@ -1,0 +1,56 @@
+.app__table {
+  margin-top: 5px;
+  margin-bottom:5px;
+  overflow-y: scroll;
+  color: #6a5d5d;
+  background-color: white;
+  height: 400px;
+  
+}
+
+table {
+  width:95%;
+  margin:auto
+}
+
+tr th {
+  background-color: white ;
+}
+
+tr:nth-child(odd) {
+  background-color: #f3f2f8;
+}
+
+thead {
+  border: 1px solid #6a5d5d;
+}
+
+th {
+  position: sticky;
+  top:0;
+  
+}
+
+td {
+  padding-bottom:0.25rem;
+  border: none;
+  max-width: 120px;
+  
+}
+
+td div.country {
+  display: flex;
+}
+
+td div.stats  {
+  text-align: center;
+}
+
+img {
+  height: 20px;
+  width: 30px;
+  object-fit: contain;
+  border-radius: 10%;
+  margin-right:0.25rem ;
+}
+
