@@ -24,8 +24,8 @@ export const options = {
       {
         type: "time",
         time: {
-          format: "MM/DD/YY",
-          tooltipFormat: "ll",
+          parser: "MM/DD/YY",
+          tooltipFormat: 'll',
         },
       },
     ],
