@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './Header'
 import Stats from './Stats';
 import LineGraph from './LineGraph'
+import Table from './Table'
 import './App.css';
 
 function App() {
@@ -80,6 +81,7 @@ function App() {
         <Card>
           <CardContent>
             <h3>Current Country Stats</h3>
+            <Table setCountry={setCountry} setCaseTypes={setCasesType}/>
 
             <LineGraph casesType={casesType} country={country} />
           </CardContent>
