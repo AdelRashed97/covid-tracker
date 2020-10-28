@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {useEffect,useState,useMemo} from 'react';
 import {useTable} from 'react-table'
+import { Box, Typography } from '@material-ui/core'
 import {columns as Columns} from "./columns";
 import './Table.css'
 
@@ -41,6 +42,8 @@ const changeCountry = (event)=> {
 
 }
   return (
+    <div>
+    <h3>Current Country Stats</h3>
     <div className="app__table">
 
     <table {...getTableProps()}>
@@ -67,6 +70,12 @@ const changeCountry = (event)=> {
         })}
       </tbody>
     </table>
+    </div>
+    <Box fontStyle="italic" >
+        <Typography variant="caption" >
+          Note: N/A indicates unavailable data.
+        </Typography>
+        </Box>
     </div>
   )
 }
