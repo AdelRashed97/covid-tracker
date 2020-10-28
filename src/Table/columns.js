@@ -27,7 +27,7 @@ export  const columns = [
     Header:"Active",
     accessor:"cases",
     Cell: function ({value}) {
-      if (value === 'null') {
+      if (value === null) {
         return (
           <div className="stats">
           <strong>N/A</strong>
@@ -51,7 +51,7 @@ export  const columns = [
     Header:"Recovered",
     accessor:"recovered",
     Cell: function ({value}) {
-      if (value === 'null') {
+      if (value === null) {
         return (
           <div className="stats">
           <strong>N/A</strong>
@@ -75,7 +75,7 @@ export  const columns = [
     Header:"Deaths",
     accessor:"deaths",
     Cell: function ({value}) {
-      if (value === 'null') {
+      if (value === null) {
         return (
           <div className="stats">
           <strong>N/A</strong>
