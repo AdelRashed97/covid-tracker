@@ -27,15 +27,21 @@ function App() {
     setCasesType("cases")
     if (country ==="Worldwide") {
       setMapCenter({ lat: 34.80746, lng: -40.4796 })
+      if (width >= 600 ) {
+        setMapZoom(2)
+      } else {
+        setMapZoom(1)
+      }
     } else {
       setMapCenter({ lat: data[country].lat, lng: data[country].long })
+      if (width >= 600 ) {
+        setMapZoom(4)
+      } else {
+        setMapZoom(3)
+      }
     }
 
-    if (width >= 600 ) {
-      setMapZoom(4)
-    } else {
-      setMapZoom(3)
-    }
+    
   };
 
   useEffect(()=>{
