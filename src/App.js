@@ -5,7 +5,9 @@ import Header from './Header'
 import Stats from './Stats';
 import LineGraph from './LineGraph'
 import Table from './Table'
+import Map from './Map'
 import './App.css';
+import "leaflet/dist/leaflet.css";
 
 function App() {
   const updateTime = 30 * 60 * 1000; // min * sec * millisecond
@@ -43,6 +45,7 @@ function App() {
         countries={countriesList} />
 
         <Stats stats={data[country]} setCasesType={setCasesType}/>
+        <Map/>
       </div>
       
       <div className = "app__right">
