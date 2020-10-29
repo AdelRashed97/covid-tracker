@@ -6,7 +6,8 @@ export  const columns = [
     accessor: function(row) {
       return JSON.stringify({
         name:row.country,
-        flag:row.countryInfo.flag
+        flag:row.countryInfo.flag,
+        iso3:row.countryInfo.iso3
       })
 
     },
@@ -15,7 +16,7 @@ export  const columns = [
       return (
         <div className="country">
           <img src={country.flag} alt="flag"/>
-            <div className="country__name"> {country.name} </div>
+            <div className="country__name" data-iso3={country.iso3}> {country.name} </div>
         </div>
       )
     },

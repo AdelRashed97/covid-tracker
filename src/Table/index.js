@@ -36,7 +36,7 @@ export default function Table({changeCountry}) {
   })
 
 const onClick = (event)=> {
-  const country = event.currentTarget.getElementsByClassName('country__name')[0].innerHTML.trim();
+  const country = event.currentTarget.getElementsByClassName('country__name')[0].getAttribute("data-iso3");
   changeCountry(country)
 
 }
