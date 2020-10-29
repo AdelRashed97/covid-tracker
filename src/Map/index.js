@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
+import {isEmpty} from 'lodash'
+import axios from 'axios'
+import {buildMapData} from './buildMapData'
 import './Map.css'
 
 
-function Map({ countries, casesType, center, zoom }) {
+
+function Map({ data, casesType, center, zoom }) {
+  const path = 'https://datahub.io/core/geo-countries/r/0.geojson'
+  const [geoJSON,setGeoJSON]=useState({});
+  const [mapData,setMapData]=useState({});
+
+  useEffect(()=>{
+    axios.get(path)
+    .then(res=> setGeoJSON(res.data))
+  },[])
+
+  useEffect(()=>{
+    if (!isEmpty(geoJSON) && !isEmpty(data)) {
+      setMapData(buildMapData(geoJSON,data))
+
+    }
+
+  },[geoJSON,data])
   return (
     <div className="map">
       <LeafletMap center={center} zoom={zoom}>
