@@ -6,7 +6,7 @@ import './Map.css'
 function Map({ countries, casesType, center, zoom }) {
   return (
     <div className="map">
-      <LeafletMap center={{ lat: 34.80746, lng: -40.4796 }} zoom={3}>
+      <LeafletMap center={center} zoom={zoom}>
       
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
