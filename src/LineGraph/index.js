@@ -8,7 +8,7 @@ import { Box, Typography } from '@material-ui/core'
 
 
 
-export default function LineGraph({casesType,country}) {
+export default function LineGraph({casesType,country,countryName}) {
   const [tsData, setTsData]=useState({}); // ts stands for time series
   const [chartData,setChartData]=useState([]);
   // fetch time series data for selected option
@@ -49,7 +49,7 @@ export default function LineGraph({casesType,country}) {
 
   return (
     <div>
-      <h3> {country} new {casesType} </h3>
+      <h3> {countryName} new {casesType} </h3>
       <div className="app__line-graph-container">
 
       <Line

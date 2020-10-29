@@ -51,7 +51,7 @@ function App() {
             
             <Table changeCountry={changeCountry}/>
 
-            <LineGraph casesType={casesType} country={country} />
+            <LineGraph casesType={casesType} country={country} countryName={data[country] ? data[country].name:"Worldwide"} />
           </CardContent>
         </Card>
 
