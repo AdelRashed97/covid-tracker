@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardContent } from '@material-ui/core';
-import {getCovidData} from './dataHelper'
+import {getCovidData,getListOfCountries} from './dataHelper'
 import Header from './Header'
 import Stats from './Stats';
 import LineGraph from './LineGraph'
@@ -24,7 +24,8 @@ function App() {
 
   useEffect(()=>{
    getCovidData(setData)
-   .then(data => setCountriesList(Object.keys(data)))
+   .then(data => getListOfCountries(data))
+   .then(countries => setCountriesList(countries))
    
     setInterval(()=>{
       getCovidData(setData)

@@ -22,7 +22,7 @@ function Header({country,changeCountry,countries}) {
           >
             { 
               countries.map((country,index) => {
-              return <MenuItem key={index} value={country}>{country}</MenuItem>
+              return <MenuItem key={index} value={country.iso3}>{country.name}</MenuItem>
             })
             }
             

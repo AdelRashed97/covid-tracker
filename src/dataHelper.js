@@ -1,6 +1,7 @@
 import axios from 'axios';
 const covidData = (data) => {
   return ({
+    "name": data.country || "Worldwide",
     "totalCases":data.cases,
     "activeCases":data.active,
     "recoveredCases":data.recovered,
@@ -27,15 +28,27 @@ export  const getCovidData= async(setData) => {
   await axios.get(`https://disease.sh/v3/covid-19/countries?yesterday=false&twoDaysAgo=false&allowNull=false`)
     .then(res => {
       res.data.forEach(country => {
-        data[country.country] = covidData(country);
+        data[country.countryInfo.iso3] = covidData(country);
       });
     });
 
     setData(data);
-    console.log(data)
     return data
     
 
+}
+
+export const getListOfCountries = (data) => {
+  const countries = []
+  console.log(data)
+  for (const country in data) {
+    countries.push({
+      name:data[country].name,
+      iso3:country
+    })
+  }
+
+  return countries;
 }
   
 
