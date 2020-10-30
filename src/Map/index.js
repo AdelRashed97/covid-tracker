@@ -1,8 +1,9 @@
 import React, { useEffect,useState } from "react";
-import { Map as LeafletMap, TileLayer } from "react-leaflet";
+import { Map as LeafletMap, TileLayer,GeoJSON} from "react-leaflet";
 import {isEmpty} from 'lodash'
 import axios from 'axios'
 import {buildMapData} from './buildMapData'
+import ShowMap from './ShowMap'
 import './Map.css'
 
 
@@ -32,7 +33,8 @@ function Map({ data, casesType, center, zoom }) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        {/* {showDataOnMap(countries, casesType)} */}
+        {/* {isEmpty(mapData) ? null: <GeoJSON data={mapData}/>} */}
+        <ShowMap casesType={casesType} mapData={mapData}/>
       </LeafletMap>
     </div>
   );

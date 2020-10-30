@@ -26,7 +26,7 @@ export  const columns = [
 
   {
     Header:"Active",
-    accessor:"cases",
+    accessor:"active",
     Cell: function ({value}) {
       if (value === null) {
         return (

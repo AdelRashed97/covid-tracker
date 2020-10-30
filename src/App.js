@@ -69,7 +69,7 @@ function App() {
         countries={countriesList} />
 
         <Stats stats={data[country]} setCasesType={setCasesType}/>
-        <Map zoom={mapZoom} center={mapCenter} data={data}/>
+        <Map zoom={mapZoom} center={mapCenter} data={data} casesType={casesType}/>
       </div>
       
       <div className = "app__right">

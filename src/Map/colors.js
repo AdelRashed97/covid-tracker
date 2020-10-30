@@ -1,5 +1,7 @@
+import { red } from "@material-ui/core/colors";
+
 function activeCasesColor(d) {
-  return d >= 5e6 ? '#b10026' :
+  return d >= 2e6 ? '#b10026' :
          d > 1e6  ? '#e31a1c' :
          d > 5e5  ? '#fc4e2a' :
          d > 1e5  ? '#fd8d3c' :
@@ -21,7 +23,7 @@ function recoveredCasesColor(d) {
 }
 
 function deathCasesColor(d) {
-  return d > 2e5  ? '#cb181d' :
+  return d > 25e4  ? '#cb181d' :
          d > 2e5  ? '#ef3b2c' :
          d > 1e5  ? '#fb6a4a' :
          d > 5e4  ? '#fc9272' :
@@ -35,26 +37,29 @@ function deathCasesColor(d) {
 export function casesStyle(feature) {
   return {
       fillColor: activeCasesColor(feature.properties.cases),
-      weight: 0,
-      opacity: 0,
+      weight: 1,
+      opacity: 0.5,
+      color:'black',
       fillOpacity: 0.7
   };
 }
 
 export function recoveredStyle(feature) {
   return {
-      fillColor: recoveredCasesColor(feature.properties.cases),
-      weight: 0,
-      opacity: 0,
+      fillColor: recoveredCasesColor(feature.properties.recovered),
+      weight: 1,
+      opacity: 0.5,
+      color:'black',
       fillOpacity: 0.7
   };
 }
 
 export function deathsStyle(feature) {
   return {
-      fillColor: deathCasesColor(feature.properties.cases),
-      weight: 0,
-      opacity: 0,
+      fillColor: deathCasesColor(feature.properties.deaths),
+      weight: 1,
+      opacity: 0.5,
+      color:'black',
       fillOpacity: 0.7
   };
 }

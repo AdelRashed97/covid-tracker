@@ -11,11 +11,11 @@ export default function Table({changeCountry}) {
   const [data,setData] = useState([]);
 
   useEffect(()=>{
-    axios.get('https://disease.sh/v3/covid-19/countries?yesterday=false&twoDaysAgo=false&sort=cases&allowNull=true')
+    axios.get('https://disease.sh/v3/covid-19/countries?yesterday=false&twoDaysAgo=false&sort=active&allowNull=true')
     .then (res => setData(res.data))
 
     setInterval(()=>{
-      axios.get('https://disease.sh/v3/covid-19/countries?yesterday=false&twoDaysAgo=false&sort=cases&allowNull=true')
+      axios.get('https://disease.sh/v3/covid-19/countries?yesterday=false&twoDaysAgo=false&sort=active&allowNull=true')
     .then (res => setData(res.data))
 
     },updateTime)
