@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from "react";
-import { Map as LeafletMap, TileLayer,GeoJSON} from "react-leaflet";
+import { Map as LeafletMap, TileLayer,Popup} from "react-leaflet";
 import {isEmpty} from 'lodash'
 import axios from 'axios'
 import {buildMapData} from './buildMapData'
@@ -35,6 +35,7 @@ function Map({ data, casesType, center, zoom }) {
         />
         {/* {isEmpty(mapData) ? null: <GeoJSON data={mapData}/>} */}
         <ShowMap casesType={casesType} mapData={mapData}/>
+        
       </LeafletMap>
     </div>
   );

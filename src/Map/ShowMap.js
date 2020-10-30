@@ -2,6 +2,7 @@ import React from 'react'
 import {isEmpty} from 'lodash'
 import { GeoJSON} from "react-leaflet";
 import {casesStyle,recoveredStyle,deathsStyle} from './colors'
+import popupContent from "./popupContent"
 
 export default function ShowMap({casesType,mapData}) {
   let style
@@ -21,7 +22,13 @@ console.log(style)
   return (
   <>
 
-    {isEmpty(mapData)? null: <GeoJSON data={mapData} style={style}/>}
+    {isEmpty(mapData)? null: <GeoJSON data={mapData} style={style}
+    onEachFeature={(feature,layer)=>layer.bindPopup(popupContent(feature))} />
+    
+    
+    
+  }
+    
   </>
   )
 }
