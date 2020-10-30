@@ -1,4 +1,4 @@
-import { red } from "@material-ui/core/colors";
+
 
 function activeCasesColor(d) {
   return d >= 2e6 ? '#b10026' :
