@@ -3,7 +3,7 @@ import { Grid } from '@material-ui/core'
 import InfoBox from './InfoBox'
 import './Stats.css'
 
-export default function Stats({stats,setCasesType}) {
+export default function Stats({stats,setCasesType,casesType}) {
   return (
     <Grid className="app__stats" container justify="space-between" space={1} wrap="wrap">
 
@@ -14,6 +14,8 @@ export default function Stats({stats,setCasesType}) {
           title="Active" 
           cases ={stats ? stats.todayCases : null}
           totalCases = {stats ? stats.activeCases : null }
+          type="active"
+          selected = {casesType === "cases"}
          />
 
       </Grid>
@@ -25,6 +27,8 @@ export default function Stats({stats,setCasesType}) {
           title="Recoverd" 
           cases ={stats ? stats.todayRecovered : null}
           totalCases = {stats ? stats.recoveredCases : null }
+          type="recovered"
+          selected = {casesType === "recovered"}
         />
 
       </Grid>
@@ -36,6 +40,8 @@ export default function Stats({stats,setCasesType}) {
           title="Deaths" 
           cases ={stats ? stats.todayDeaths : null}
           totalCases = {stats ? stats.deathCases : null }
+          type="deaths"
+          selected = {casesType === "deaths"}
          />
 
       </Grid>

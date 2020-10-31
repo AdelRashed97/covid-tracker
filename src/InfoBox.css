@@ -2,3 +2,39 @@
   height:100%;
   width:100%;
 }
+
+.selected {
+  border-top:10px solid;
+}
+
+.infoBox__cases {
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.active {
+  color:#F1C40F;
+  border-top-color:#F1C40F
+
+}
+
+.recovered {
+  color:#2ECC71;
+  border-top-color: #2ECC71;
+}
+
+.deaths {
+  color: #E74C3C;
+  border-top-color: #E74C3C;
+}
+
+
+
+
+.infobox__total {
+  color: #6c757d;
+  font-weight: 700 !important;
+  font-size: 0.8rem !important;
+  margin-top: 15px !important;
+}

@@ -1,14 +1,14 @@
 
 
 function activeCasesColor(d) {
-  return d >= 2e6 ? '#b10026' :
-         d > 1e6  ? '#e31a1c' :
-         d > 5e5  ? '#fc4e2a' :
-         d > 1e5  ? '#fd8d3c' :
-         d > 5e4  ? '#feb24c' :
-         d > 1e4  ? '#fed976' :
-         d > 1e3   ? '#ffeda0' :
-                    '#ffffcc';
+  return d >= 2e6 ? '#8c2d04' :
+         d > 1e6  ? '#cc4c02' :
+         d > 5e5  ? '#ec7014' :
+         d > 1e5  ? '#fe9929' :
+         d > 5e4  ? '#fec44f' :
+         d > 1e4  ? '#fee391' :
+         d > 1e3   ? '#fff7bc' :
+                    '#ffffe5';
 }
 
 function recoveredCasesColor(d) {
